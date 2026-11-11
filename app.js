@@ -6,13 +6,13 @@
 // Clave de almacenamiento en LocalStorage
 const STORAGE_KEY = 'billetera_lite_gastos';
 
-// Mapa de emojis y clases para cada categoría
+// Iniciales y clases para cada categoría
 const CATEGORY_META = {
-  'Comida': { icon: '🍔', className: 'cat-comida' },
-  'Transporte': { icon: '🚌', className: 'cat-transporte' },
-  'Servicios': { icon: '💡', className: 'cat-servicios' },
-  'Ocio': { icon: '🎮', className: 'cat-ocio' },
-  'Otros': { icon: '📦', className: 'cat-otros' }
+  'Comida': { code: 'C', className: 'cat-comida' },
+  'Transporte': { code: 'T', className: 'cat-transporte' },
+  'Servicios': { code: 'S', className: 'cat-servicios' },
+  'Ocio': { code: 'O', className: 'cat-ocio' },
+  'Otros': { code: 'O', className: 'cat-otros' }
 };
 
 // Elementos del DOM
@@ -112,8 +112,8 @@ function updateConnectionStatus() {
   } else {
     connectionBadge.classList.remove('online');
     connectionBadge.classList.add('offline');
-    connectionBadge.title = 'Sin conexión (Modo Offline activo)';
-    connectionText.textContent = 'Sin conexión';
+    connectionBadge.title = 'Sin conexión';
+    connectionText.textContent = 'Offline';
   }
 }
 
@@ -122,12 +122,12 @@ function setupNetworkListeners() {
 
   window.addEventListener('online', () => {
     updateConnectionStatus();
-    showToast('🟢 Conexión restablecida');
+    showToast('Conexión restablecida');
   });
 
   window.addEventListener('offline', () => {
     updateConnectionStatus();
-    showToast('🟠 Modo sin conexión activo (100% funcional)', 'warning');
+    showToast('Modo offline activo', 'warning');
   });
 }
 
@@ -276,7 +276,7 @@ function render() {
       <article class="expense-item" data-id="${gasto.id}">
         <div class="expense-left">
           <div class="category-icon ${meta.className}" title="${gasto.categoria}">
-            ${meta.icon}
+            <span>${meta.code}</span>
           </div>
           <div class="expense-details">
             <span class="expense-concept" title="${safeConcepto}">${safeConcepto}</span>
@@ -359,7 +359,7 @@ expenseForm.addEventListener('submit', (e) => {
   // Limpiar campos y dar feedback
   expenseForm.reset();
   conceptInput.focus();
-  showToast(`✅ Gasto guardado: ${concepto}`);
+  showToast(`Gasto guardado: ${concepto}`);
 });
 
 // Limpieza dinámica de errores al escribir

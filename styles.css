@@ -513,13 +513,15 @@ body {
 }
 
 .category-icon {
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   border-radius: var(--radius-md);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.25rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-main);
   flex-shrink: 0;
 }
 

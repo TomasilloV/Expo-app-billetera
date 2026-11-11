@@ -18,11 +18,11 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 const STORAGE_KEY = '@billetera_lite_gastos';
 
 const CATEGORIES = [
-  { id: 'Comida', label: 'Comida', icon: '🍔', color: '#f97316' },
-  { id: 'Transporte', label: 'Transporte', icon: '🚌', color: '#3b82f6' },
-  { id: 'Servicios', label: 'Servicios', icon: '💡', color: '#eab308' },
-  { id: 'Ocio', label: 'Ocio', icon: '🎮', color: '#a855f7' },
-  { id: 'Otros', label: 'Otros', icon: '📦', color: '#64748b' }
+  { id: 'Comida', label: 'Comida' },
+  { id: 'Transporte', label: 'Transporte' },
+  { id: 'Servicios', label: 'Servicios' },
+  { id: 'Ocio', label: 'Ocio' },
+  { id: 'Otros', label: 'Otros' }
 ];
 
 export default function App() {
@@ -168,11 +168,10 @@ export default function App() {
           <View style={styles.header}>
             <View>
               <Text style={styles.title}>Mi Billetera Lite</Text>
-              <Text style={styles.subtitle}>Control de Gastos Offline</Text>
+              <Text style={styles.subtitle}>Control de Gastos</Text>
             </View>
             <View style={styles.badge}>
-              <View style={styles.badgeDot} />
-              <Text style={styles.badgeText}>Offline 100%</Text>
+              <Text style={styles.badgeText}>Offline</Text>
             </View>
           </View>
 
@@ -188,12 +187,12 @@ export default function App() {
               <Text style={styles.currencySymbol}>$</Text>
               <Text style={styles.totalAmount}>{formattedTotal}</Text>
             </View>
-            <Text style={styles.totalFooterNote}>⚡ Datos guardados en tu dispositivo</Text>
+            <Text style={styles.totalFooterNote}>Almacenamiento local</Text>
           </View>
 
           {/* Formulario */}
           <View style={styles.card}>
-            <Text style={styles.sectionTitle}>+ Registrar Nuevo Gasto</Text>
+            <Text style={styles.sectionTitle}>Registrar Gasto</Text>
 
             <Text style={styles.inputLabel}>Concepto</Text>
             <TextInput
@@ -229,8 +228,13 @@ export default function App() {
                     onPress={() => setCategoria(cat.id)}
                     activeOpacity={0.7}
                   >
-                    <Text style={styles.categoryChipText}>
-                      {cat.icon} {cat.label}
+                    <Text
+                      style={[
+                        styles.categoryChipText,
+                        isSelected && styles.categoryChipTextSelected
+                      ]}
+                    >
+                      {cat.label}
                     </Text>
                   </TouchableOpacity>
                 );
@@ -257,14 +261,12 @@ export default function App() {
 
             {gastos.length === 0 ? (
               <View style={styles.emptyContainer}>
-                <Text style={styles.emptyIcon}>💳</Text>
-                <Text style={styles.emptyTitle}>Aún no hay gastos registrados</Text>
-                <Text style={styles.emptySubtitle}>Agrega tu primer gasto con el formulario arriba.</Text>
+                <Text style={styles.emptyTitle}>No hay gastos registrados</Text>
+                <Text style={styles.emptySubtitle}>Ingresa un gasto en el formulario.</Text>
               </View>
             ) : (
               <View style={styles.listContainer}>
                 {gastos.map((item) => {
-                  const catMeta = CATEGORIES.find((c) => c.id === item.categoria) || CATEGORIES[4];
                   const itemMonto = (Number(item.monto) || 0).toLocaleString('es-MX', {
                     minimumFractionDigits: 2,
                     maximumFractionDigits: 2
@@ -273,8 +275,10 @@ export default function App() {
                   return (
                     <View key={item.id} style={styles.expenseItem}>
                       <View style={styles.expenseLeft}>
-                        <View style={[styles.itemIconBox, { backgroundColor: catMeta.color + '25' }]}>
-                          <Text style={styles.itemEmoji}>{catMeta.icon}</Text>
+                        <View style={styles.itemBadgeCategory}>
+                          <Text style={styles.itemBadgeText}>
+                            {item.categoria.substring(0, 1)}
+                          </Text>
                         </View>
                         <View style={styles.itemTextContainer}>
                           <Text style={styles.itemConcepto} numberOfLines={1}>
@@ -305,7 +309,7 @@ export default function App() {
                   onPress={handleClearAll}
                   activeOpacity={0.7}
                 >
-                  <Text style={styles.btnClearAllText}>Borrar todo el historial</Text>
+                  <Text style={styles.btnClearAllText}>Borrar historial</Text>
                 </TouchableOpacity>
               </View>
             )}
@@ -347,30 +351,21 @@ const styles = StyleSheet.create({
     marginTop: 2
   },
   badge: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: 'rgba(16, 185, 129, 0.15)',
-    paddingVertical: 4,
+    paddingVertical: 3,
     paddingHorizontal: 8,
-    borderRadius: 20,
+    borderRadius: 8,
+    backgroundColor: 'rgba(148, 163, 184, 0.12)',
     borderWidth: 1,
-    borderColor: 'rgba(16, 185, 129, 0.3)'
-  },
-  badgeDot: {
-    width: 6,
-    height: 6,
-    borderRadius: 3,
-    backgroundColor: '#10b981',
-    marginRight: 6
+    borderColor: 'rgba(148, 163, 184, 0.25)'
   },
   badgeText: {
-    color: '#34d399',
+    color: '#cbd5e1',
     fontSize: 11,
-    fontWeight: '700'
+    fontWeight: '600'
   },
   totalCard: {
     backgroundColor: '#13273e',
-    borderRadius: 18,
+    borderRadius: 16,
     padding: 18,
     marginBottom: 16,
     borderWidth: 1,
@@ -385,7 +380,7 @@ const styles = StyleSheet.create({
     color: '#a7f3d0',
     fontSize: 12,
     fontWeight: '700',
-    letterSpacing: 1
+    letterSpacing: 0.8
   },
   totalCount: {
     color: '#94a3b8',
@@ -393,7 +388,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(255, 255, 255, 0.08)',
     paddingHorizontal: 8,
     paddingVertical: 2,
-    borderRadius: 10
+    borderRadius: 8
   },
   amountRow: {
     flexDirection: 'row',
@@ -417,7 +412,7 @@ const styles = StyleSheet.create({
   },
   card: {
     backgroundColor: '#1c2640',
-    borderRadius: 18,
+    borderRadius: 16,
     padding: 16,
     marginBottom: 16,
     borderWidth: 1,
@@ -454,9 +449,9 @@ const styles = StyleSheet.create({
   },
   categoryChip: {
     backgroundColor: '#151d30',
-    paddingVertical: 6,
-    paddingHorizontal: 10,
-    borderRadius: 12,
+    paddingVertical: 8,
+    paddingHorizontal: 12,
+    borderRadius: 10,
     borderWidth: 1,
     borderColor: 'rgba(255, 255, 255, 0.1)'
   },
@@ -465,13 +460,17 @@ const styles = StyleSheet.create({
     borderColor: '#34d399'
   },
   categoryChipText: {
-    color: '#f8fafc',
-    fontSize: 12,
+    color: '#94a3b8',
+    fontSize: 13,
     fontWeight: '600'
+  },
+  categoryChipTextSelected: {
+    color: '#ffffff',
+    fontWeight: '700'
   },
   btnPrimary: {
     backgroundColor: '#10b981',
-    borderRadius: 12,
+    borderRadius: 10,
     paddingVertical: 12,
     alignItems: 'center',
     marginTop: 14
@@ -491,7 +490,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(255, 255, 255, 0.08)',
     paddingHorizontal: 8,
     paddingVertical: 2,
-    borderRadius: 10
+    borderRadius: 8
   },
   countBadgeText: {
     color: '#94a3b8',
@@ -518,16 +517,19 @@ const styles = StyleSheet.create({
     flex: 1,
     marginRight: 8
   },
-  itemIconBox: {
-    width: 38,
-    height: 38,
-    borderRadius: 10,
+  itemBadgeCategory: {
+    width: 32,
+    height: 32,
+    borderRadius: 8,
+    backgroundColor: 'rgba(255, 255, 255, 0.06)',
     justifyContent: 'center',
     alignItems: 'center',
     marginRight: 10
   },
-  itemEmoji: {
-    fontSize: 18
+  itemBadgeText: {
+    color: '#94a3b8',
+    fontSize: 13,
+    fontWeight: '700'
   },
   itemTextContainer: {
     flex: 1
@@ -553,16 +555,16 @@ const styles = StyleSheet.create({
     fontWeight: '700'
   },
   btnDelete: {
-    backgroundColor: 'rgba(239, 68, 68, 0.15)',
-    width: 26,
-    height: 26,
-    borderRadius: 13,
+    backgroundColor: 'rgba(239, 68, 68, 0.12)',
+    width: 24,
+    height: 24,
+    borderRadius: 12,
     justifyContent: 'center',
     alignItems: 'center'
   },
   btnDeleteText: {
     color: '#f87171',
-    fontSize: 12,
+    fontSize: 11,
     fontWeight: 'bold'
   },
   btnClearAll: {
@@ -570,21 +572,17 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     borderRadius: 10,
     borderWidth: 1,
-    borderColor: 'rgba(239, 68, 68, 0.3)',
+    borderColor: 'rgba(239, 68, 68, 0.25)',
     alignItems: 'center'
   },
   btnClearAllText: {
     color: '#f87171',
     fontSize: 12,
-    fontWeight: '700'
+    fontWeight: '600'
   },
   emptyContainer: {
-    paddingVertical: 24,
+    paddingVertical: 20,
     alignItems: 'center'
-  },
-  emptyIcon: {
-    fontSize: 32,
-    marginBottom: 8
   },
   emptyTitle: {
     color: '#f8fafc',
