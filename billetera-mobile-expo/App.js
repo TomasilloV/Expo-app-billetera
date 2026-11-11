@@ -323,7 +323,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#0b0f19'
+    backgroundColor: '#121214'
   },
   center: {
     justifyContent: 'center',
@@ -342,34 +342,35 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 20,
-    fontWeight: '800',
-    color: '#f8fafc'
+    fontWeight: '700',
+    color: '#f2f2f7',
+    letterSpacing: -0.3
   },
   subtitle: {
     fontSize: 12,
-    color: '#94a3b8',
+    color: '#8e8e93',
     marginTop: 2
   },
   badge: {
     paddingVertical: 3,
     paddingHorizontal: 8,
     borderRadius: 8,
-    backgroundColor: 'rgba(148, 163, 184, 0.12)',
+    backgroundColor: '#202022',
     borderWidth: 1,
-    borderColor: 'rgba(148, 163, 184, 0.25)'
+    borderColor: '#2c2c2e'
   },
   badgeText: {
-    color: '#cbd5e1',
+    color: '#a1a1a6',
     fontSize: 11,
     fontWeight: '600'
   },
   totalCard: {
-    backgroundColor: '#13273e',
+    backgroundColor: '#1c1c1e',
     borderRadius: 16,
     padding: 18,
     marginBottom: 16,
     borderWidth: 1,
-    borderColor: 'rgba(16, 185, 129, 0.25)'
+    borderColor: '#2c2c2e'
   },
   totalHeader: {
     flexDirection: 'row',
@@ -377,15 +378,15 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   totalLabel: {
-    color: '#a7f3d0',
+    color: '#8e8e93',
     fontSize: 12,
-    fontWeight: '700',
-    letterSpacing: 0.8
+    fontWeight: '600',
+    letterSpacing: 0.6
   },
   totalCount: {
-    color: '#94a3b8',
+    color: '#a1a1a6',
     fontSize: 11,
-    backgroundColor: 'rgba(255, 255, 255, 0.08)',
+    backgroundColor: '#2c2c2e',
     paddingHorizontal: 8,
     paddingVertical: 2,
     borderRadius: 8
@@ -396,47 +397,48 @@ const styles = StyleSheet.create({
     marginVertical: 10
   },
   currencySymbol: {
-    color: '#34d399',
+    color: '#8e8e93',
     fontSize: 24,
-    fontWeight: '700',
+    fontWeight: '600',
     marginRight: 4
   },
   totalAmount: {
-    color: '#ffffff',
+    color: '#f2f2f7',
     fontSize: 34,
-    fontWeight: '800'
+    fontWeight: '700',
+    letterSpacing: -0.5
   },
   totalFooterNote: {
-    color: '#64748b',
+    color: '#636366',
     fontSize: 11
   },
   card: {
-    backgroundColor: '#1c2640',
+    backgroundColor: '#1c1c1e',
     borderRadius: 16,
     padding: 16,
     marginBottom: 16,
     borderWidth: 1,
-    borderColor: 'rgba(255, 255, 255, 0.06)'
+    borderColor: '#2c2c2e'
   },
   sectionTitle: {
-    color: '#f8fafc',
+    color: '#f2f2f7',
     fontSize: 15,
-    fontWeight: '700',
+    fontWeight: '600',
     marginBottom: 12
   },
   inputLabel: {
-    color: '#94a3b8',
+    color: '#8e8e93',
     fontSize: 12,
-    fontWeight: '600',
+    fontWeight: '500',
     marginBottom: 6,
     marginTop: 8
   },
   input: {
-    backgroundColor: '#151d30',
+    backgroundColor: '#242426',
     borderRadius: 10,
     borderWidth: 1,
-    borderColor: 'rgba(255, 255, 255, 0.1)',
-    color: '#f8fafc',
+    borderColor: '#38383a',
+    color: '#f2f2f7',
     fontSize: 15,
     paddingHorizontal: 12,
     paddingVertical: 10
@@ -448,35 +450,35 @@ const styles = StyleSheet.create({
     marginVertical: 8
   },
   categoryChip: {
-    backgroundColor: '#151d30',
+    backgroundColor: '#242426',
     paddingVertical: 8,
     paddingHorizontal: 12,
     borderRadius: 10,
     borderWidth: 1,
-    borderColor: 'rgba(255, 255, 255, 0.1)'
+    borderColor: '#38383a'
   },
   categoryChipSelected: {
-    backgroundColor: '#10b981',
-    borderColor: '#34d399'
+    backgroundColor: '#f2f2f7',
+    borderColor: '#f2f2f7'
   },
   categoryChipText: {
-    color: '#94a3b8',
+    color: '#8e8e93',
     fontSize: 13,
-    fontWeight: '600'
+    fontWeight: '500'
   },
   categoryChipTextSelected: {
-    color: '#ffffff',
+    color: '#121214',
     fontWeight: '700'
   },
   btnPrimary: {
-    backgroundColor: '#10b981',
+    backgroundColor: '#f2f2f7',
     borderRadius: 10,
     paddingVertical: 12,
     alignItems: 'center',
     marginTop: 14
   },
   btnPrimaryText: {
-    color: '#ffffff',
+    color: '#121214',
     fontSize: 15,
     fontWeight: '700'
   },
@@ -487,29 +489,29 @@ const styles = StyleSheet.create({
     marginBottom: 8
   },
   countBadge: {
-    backgroundColor: 'rgba(255, 255, 255, 0.08)',
+    backgroundColor: '#2c2c2e',
     paddingHorizontal: 8,
     paddingVertical: 2,
     borderRadius: 8
   },
   countBadgeText: {
-    color: '#94a3b8',
+    color: '#a1a1a6',
     fontSize: 11,
-    fontWeight: '700'
+    fontWeight: '600'
   },
   listContainer: {
     gap: 10,
     marginTop: 6
   },
   expenseItem: {
-    backgroundColor: '#151d30',
+    backgroundColor: '#202022',
     borderRadius: 12,
     padding: 12,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     borderWidth: 1,
-    borderColor: 'rgba(255, 255, 255, 0.05)'
+    borderColor: '#2c2c2e'
   },
   expenseLeft: {
     flexDirection: 'row',
@@ -521,26 +523,26 @@ const styles = StyleSheet.create({
     width: 32,
     height: 32,
     borderRadius: 8,
-    backgroundColor: 'rgba(255, 255, 255, 0.06)',
+    backgroundColor: '#2c2c2e',
     justifyContent: 'center',
     alignItems: 'center',
     marginRight: 10
   },
   itemBadgeText: {
-    color: '#94a3b8',
+    color: '#aeaeb2',
     fontSize: 13,
-    fontWeight: '700'
+    fontWeight: '600'
   },
   itemTextContainer: {
     flex: 1
   },
   itemConcepto: {
-    color: '#f8fafc',
+    color: '#f2f2f7',
     fontSize: 14,
-    fontWeight: '700'
+    fontWeight: '600'
   },
   itemMeta: {
-    color: '#94a3b8',
+    color: '#8e8e93',
     fontSize: 11,
     marginTop: 2
   },
@@ -550,12 +552,12 @@ const styles = StyleSheet.create({
     gap: 10
   },
   itemMonto: {
-    color: '#f87171',
+    color: '#f2f2f7',
     fontSize: 14,
-    fontWeight: '700'
+    fontWeight: '600'
   },
   btnDelete: {
-    backgroundColor: 'rgba(239, 68, 68, 0.12)',
+    backgroundColor: 'rgba(255, 255, 255, 0.06)',
     width: 24,
     height: 24,
     borderRadius: 12,
@@ -563,34 +565,34 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   btnDeleteText: {
-    color: '#f87171',
+    color: '#8e8e93',
     fontSize: 11,
-    fontWeight: 'bold'
+    fontWeight: '600'
   },
   btnClearAll: {
     marginTop: 12,
     paddingVertical: 10,
     borderRadius: 10,
     borderWidth: 1,
-    borderColor: 'rgba(239, 68, 68, 0.25)',
+    borderColor: '#2c2c2e',
     alignItems: 'center'
   },
   btnClearAllText: {
-    color: '#f87171',
+    color: '#8e8e93',
     fontSize: 12,
-    fontWeight: '600'
+    fontWeight: '500'
   },
   emptyContainer: {
     paddingVertical: 20,
     alignItems: 'center'
   },
   emptyTitle: {
-    color: '#f8fafc',
+    color: '#f2f2f7',
     fontSize: 14,
     fontWeight: '600'
   },
   emptySubtitle: {
-    color: '#64748b',
+    color: '#636366',
     fontSize: 12,
     textAlign: 'center',
     marginTop: 4
