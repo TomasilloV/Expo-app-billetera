@@ -21,7 +21,7 @@ const CATEGORIES = [
   { id: 'Comida', label: 'Comida' },
   { id: 'Transporte', label: 'Transporte' },
   { id: 'Servicios', label: 'Servicios' },
-  { id: 'Ocio', label: 'Ocio' },
+  { id: 'Gustitos', label: 'Gustitos' },
   { id: 'Otros', label: 'Otros' }
 ];
 

@@ -11,7 +11,8 @@ const CATEGORY_META = {
   'Comida': { code: 'C', className: 'cat-comida' },
   'Transporte': { code: 'T', className: 'cat-transporte' },
   'Servicios': { code: 'S', className: 'cat-servicios' },
-  'Ocio': { code: 'O', className: 'cat-ocio' },
+  'Gustitos': { code: 'G', className: 'cat-ocio' },
+  'Ocio': { code: 'G', className: 'cat-ocio' },
   'Otros': { code: 'O', className: 'cat-otros' }
 };
 
