@@ -187,7 +187,6 @@ export default function App() {
               <Text style={styles.currencySymbol}>$</Text>
               <Text style={styles.totalAmount}>{formattedTotal}</Text>
             </View>
-            <Text style={styles.totalFooterNote}>Almacenamiento local</Text>
           </View>
 
           {/* Formulario */}
